@@ -7,7 +7,7 @@
 <h1>Novo usuário</h1>
 
 <form method="post" action="{{route('user.createUser')}}" >
-  @include('user.components.form')
+  @include('user.includes.userForm')
 </form>
 
 @endsection

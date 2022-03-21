@@ -12,12 +12,12 @@ class UserController extends Controller
     public function __construct(User $user){
         $this->user = $user;
     }
-    public function getAll(Request $req){
+    public function getListUser(Request $req){
         // dd('usercontroller@index');
         $search = $req->search;
         $users = $this->user->getUsers(search: $req->search ?? '');
 
-        return view('user.getAll', compact('users'));
+        return view('user.getListUser', compact('users'));
     }
     public function getUser($id){
 
@@ -34,14 +34,14 @@ class UserController extends Controller
 
         $this->user->create($data);
 
-        return redirect()->route('user.getAll');
+        return redirect()->route('user.getListUser');
     }
 
     public function deleteUser($id){
 
         if(!$user = $this->user->find($id)) return redirect()->back();
         $user->delete();
-        return redirect()->route('user.getAll');
+        return redirect()->route('user.getListUser');
 
     }
 
@@ -57,6 +57,6 @@ class UserController extends Controller
         if($req->password) $data['password'] = bcrypt($req->password);
 
         $user->update($data);
-        return redirect()->route('user.getAll');
+        return redirect()->route('user.getListUser');
     }
 }

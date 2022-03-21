@@ -8,7 +8,7 @@
 
 <form method="post" action="{{route('user.editUser', $user->id)}}" >
     @method('PATCH')
-    @include('user.components.form')
+    @include('user.includes.userForm')
 </form>
 
 @endsection
